@@ -1,4 +1,6 @@
-## **Requirement**
+## Day 19: Install and Configure Web Application
+
+### **Requirement**
 xFusionCorp Industries is planning to host two static websites on their infra in Stratos Datacenter. The development of these websites is still in-progress, but we want to get the servers ready. Please perform the following steps to accomplish the task:
 
 
@@ -21,7 +23,7 @@ Here’s a clean, reliable walkthrough you can run directly on **stapp01** (App 
 
 # ✅ **Step‑by‑step solution for hosting two static sites on Apache (port 3000)**
 
-## **1. Log in to App Server 1**
+### **1. Log in to App Server 1**
 From the jump host:
 
 ```bash
@@ -31,7 +33,7 @@ Password: **Ir0nM@n**
 
 ---
 
-## **2. Install Apache (httpd)**
+### **2. Install Apache (httpd)**
 
 ```bash
 sudo yum install httpd -y
@@ -39,7 +41,7 @@ sudo yum install httpd -y
 
 ---
 
-## **3. Change Apache port to 3000**
+### **3. Change Apache port to 3000**
 
 Edit the main config:
 
@@ -67,7 +69,7 @@ Listen 3000
 
 ---
 
-## **4. Create document roots for both websites**
+### **4. Create document roots for both websites**
 
 ```bash
 sudo mkdir -p /var/www/official
@@ -76,7 +78,7 @@ sudo mkdir -p /var/www/demo
 
 ---
 
-## **5. Copy website backups from jump host**
+### **5. Copy website backups from jump host**
 
 On **jump_host**, run:
 
@@ -93,7 +95,7 @@ sudo chown -R apache:apache /var/www/official /var/www/demo
 
 ---
 
-## **6. Create Apache virtual host configuration**
+### **6. Create Apache virtual host configuration**
 
 Create a new config file:
 
@@ -124,7 +126,7 @@ Save and exit.
 
 ---
 
-## **7. Start & enable Apache**
+### **7. Start & enable Apache**
 
 ```bash
 sudo systemctl restart httpd
@@ -133,7 +135,7 @@ sudo systemctl enable httpd
 
 ---
 
-## **8. Test using curl on stapp01**
+### **8. Test using curl on stapp01**
 
 ```bash
 curl http://localhost:3000/official/
